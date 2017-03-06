@@ -3,8 +3,9 @@
 
 Kendyll
 +20 Python graphics library tutorials
-+10 produce simple coding sample 
-+10 produce another simple coding sample
++5 produce simple coding sample 
++5 produce another simple coding sample
++10 learn rules of checkers/play online games for research
 
 Cami:
 	learn Python graphics library
