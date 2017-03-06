@@ -12,6 +12,8 @@ Cami:
 	git branches
 	
 
+// @allison @anna one or both of you look up AIs with tree implementation???
+
 Allison:
 	learn Python graphics library
 	
@@ -20,4 +22,4 @@ Anna:
 	learn Python graphics library
 	
 
-graphics library, rules of checkers, look into AI implementation with trees, git branches
+
