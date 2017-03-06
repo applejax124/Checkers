@@ -1,25 +1,28 @@
 //milestones.txt
-//group rubric
+//group member rubrics (spring break - lab6)
 
-Kendyll
-+20 Python graphics library tutorials
-+5 produce simple coding sample 
-+5 produce another simple coding sample
-+10 learn rules of checkers/play online games for research
+Kendyll:
+
+	+20 	Python graphics library tutorials
+	+5 	produce simple coding sample 
+	+5 	produce another simple coding sample
+	+10 	learn rules of checkers/play online games for research
 
 Cami:
-	learn Python graphics library
-	git branches
-	
+	+10	Create gitlab repo / add members / look into branches
+	+10	Research classes in python (cell & board class)
+	+10	Python graphics tutorial / simple code
+	+5	Rules of Checkers / play checkers
+	+5	Read about simple board game AI
 
 // @allison @anna one or both of you look up AIs with tree implementation???
 
 Allison:
-	learn Python graphics library
+	learn Python graphics library(?)
 	
 
 Anna:
-	learn Python graphics library
+	learn Python graphics library(?)
 	
 
 
