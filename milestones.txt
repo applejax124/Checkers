@@ -1,14 +1,16 @@
 //milestones.txt
-//group rubric
+//group rubrics
 
-Kendyll
+Kendyll:
 +20 Python graphics library tutorials
 +20 produce simple coding sample 
 
 Cami:
-	learn Python graphics library
-	git branches
-	
+	+10	Create gitlab repo / add members / look into branches
+	+10	Research classes in python (cell & board class)
+	+10	Python graphics tutorial / simple code
+	+5	Rules of Checkers / play checkers
+	+5	Read about simple board game AI
 
 Allison:
 	learn Python graphics library
