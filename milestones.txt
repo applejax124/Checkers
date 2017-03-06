@@ -3,7 +3,8 @@
 
 Kendyll
 +20 Python graphics library tutorials
-+20 produce simple coding sample 
++10 produce simple coding sample 
++10 produce another simple coding sample
 
 Cami:
 	learn Python graphics library
