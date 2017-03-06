@@ -3,10 +3,10 @@
 
 Kendyll:
 
-	+20 	Python graphics library tutorials
+	+20 Python graphics library tutorials
 	+5 	produce simple coding sample 
 	+5 	produce another simple coding sample
-	+10 	learn rules of checkers/play online games for research
+	+10 learn rules of checkers/play online games for research
 
 Cami:
 	+10	Create gitlab repo / add members / look into branches
