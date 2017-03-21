@@ -16,8 +16,9 @@ Cami:
 	+5	Read about simple board game AI
 
 Allison:
-	learn Python graphics library(?)
-	
+	+20 Develop plan/pseudocode for the computer player.
+	+10 Research the Python graphics library pygame, practice with tutorials.
+	+10 Create a checkerpiece.
 
 Anna:
 	+10 Python graphics library tutorials
