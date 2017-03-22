@@ -15,14 +15,17 @@ Cami:
 	+5	Rules of Checkers / play checkers
 	+5	Read about simple board game AI
 
-// @allison @anna one or both of you look up AIs with tree implementation???
-
 Allison:
-	learn Python graphics library(?)
-	
+	+20 Develop plan/pseudocode for the computer player.
+	+10 Research the Python graphics library pygame, practice with tutorials.
+	+10 Create a checkerpiece.
 
 Anna:
-	learn Python graphics library(?)
+	+10 Python graphics library tutorials
+	+5 Sample graphics executable
+	+5 Learn the rules of Checkers (think about algorithm)
+	+10 Develop checker's board cell graphic
+	+10 Learn about AI tree implementation
 	
 
 
