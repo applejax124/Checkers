@@ -16,8 +16,13 @@ def board(square):
    text = font.render("Quit",True,(0,0,0))
    screen.blit(text, (737,743))
 
-   #board of squares
    #get coordinates of square
+   for tuple in tuples:
+      if cells[tuple] is square:
+         squareX = tuple[0]
+	 squareY = tuple[1]
+
+   #board of squares
    colorAlt = 0
    for x in range (80,720,80): 
       colorAlt+=1
@@ -44,25 +49,29 @@ screen = pygame.display.set_mode((800,800))
 play = True
 clock = pygame.time.Clock()
 
+#START SCREEN
+
 board(33)
 pieces(33)
 
 while (play):
    for event in pygame.event.get():
       if event.type==pygame.KEYDOWN and pygame.mouse.get_pressed()[0]:
-         #get board square number w func and pygame.mouse.get_pos()
+	 (x,y) = pygame.mouse.get_pos()
+         cell = checkCell(x,y) #get board square number w func and pygame.mouse.get_pos()
 	 screen.fill((0,0,0))
 	 board(33)
-	 pieces(#board square number)
-	 if #square is between 1 and 32
+	 pieces(cell)
+	 if cell >= 1 and cell <= 32:
 	    moveSelect = False
 	    while (!moveSelect):
 	       if event.type==pygame.KEYDOWN and pygame.mouse.get_pressed()[0]:
-		  #get board sqaure number
+		  (x,y) = pygame.mouse.get_pos()
+		  cell2 = checkCell(x,y)#get board sqaure number
 	          moveSelect = True
 	    screen.fil((0,0,0))
-	    board(#board number)
-	    pieces(#previous number)
+	    board(cell2)
+	    pieces(cell)
  	    #send board number to game play
 	    #if move is valid change piece position in dictionary 
 	    screen.fill((0,0,0))
@@ -72,6 +81,9 @@ while (play):
       (x,y) = pygame.mouse.get_pos()
       if x >= 730 and x <= 780 and y >= 740 and y <= 760:
          play = False
+      if #win
+	 #WIN SCREEN
+	 play = False
 
       #clock.tick(60)
       pygame.display.flip()
