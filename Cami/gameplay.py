@@ -47,6 +47,7 @@ def validMove(piece, player, newCell): #takes in a piece object & player number 
 def checkJump(piece, newCell): #returns true if valid jump
 
 
+
 #GETS MOVE SIZE BASED ON ROW
 def getMoveSize(currCell, newCell): #the amount of cells the piece can move depends on the row 
                                     #it is in & the row it wants to move to
