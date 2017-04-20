@@ -1,0 +1,14 @@
+Lab 06 Report
+
+	1. Time log: https://docs.google.com/spreadsheets/d/1X7E8C_kHxV8rYW8GDaXgX7MRrcQYrdwwQcdhwFl5ra8/edit?usp=sharing
+
+	2. Repository: https://gitlab.com/camicarballo/Checkers
+
+	3. Ideas/next steps: 
+		Implement the AI/computer player as a max heap, with the maximum value of the heap representing the best possible move. Alpha-beta game tree search allows for an easy way to determine which spot the computer should move a checker to (see bst.txt) by assigning point values to different locations. Each entry in the heap/node in the tree will have a value that corresponds to how good a move is. The quality of the move will be determined by creating "branches" (aka seeing how good the move will be in the future, or moving down the list of moves that result from making a move). The algorithm also deletes all impossible (ie. moving to a red space, moving to a space where there is already a checker, etc.), which we are thinking of implementing using a pop method (deleting nodes/spaces that cannot be moved to). 
+		Using a heap also allows us to implement difficulty options. The easy option consists of the computer player chooses the minimum (last node) of the heap, aka the worst legal move that the computer can make. A possible hard option consists of the computer player always choosing the max value of the heap, or the best possible move for the computer. A possible medium-difficult AI consists of the computer player alternating between the best and the worst possible move. 
+		For more information on the AB-tree search/minimax algorithms, see bst.txt.
+		I also played around a little with python graphics (pygame), but spent most of my time researching/planning for the AI, as the 3 remaining group members focused more heavily on the graphics aspect of the game. I am familiar with pygame (the library we are using), however, my time this week was spent researching the AI.
+
+	4. Moving forward:
+		I think my next step would be to start actually implementing the algorithm. To do this, I plan on starting to assign "values" to each possible move (ex. moving to a space where the computer player's checker could be jumped over would give a location a negative point value, moving to a space where the checker became a King would add a positive value). In order to do this, I plan on looking at the rules of checkers and accounting for all possible "point" scenarios. 
