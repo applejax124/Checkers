@@ -105,3 +105,5 @@ def getMoveSize(currCell): #the amount of cells the piece can move depends on th
         return 4
     else:
         return 0
+
+
