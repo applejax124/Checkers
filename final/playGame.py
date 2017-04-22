@@ -9,6 +9,3 @@ if __name__ == '__main__':
 	#if mouse click in Two Players then display board
 
 	checkersBoard.board(square)
-
-
-
