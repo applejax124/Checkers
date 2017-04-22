@@ -33,29 +33,54 @@ def homeScreen():
 	screen.blit(groupText2, (5, 550))
 	
 #pass in results and this will display them based off of that
-def resultScreen():
+def resultScreen(winner):
 	pygame.font.init()
 	font = "forque"
 	font1 = pygame.font.SysFont(font, 150)
-	#choose which one based on passed in parameters
-	p1Text = font1.render("Player One", True, (250, 220, 5))
-	p2Text = font1.render("Player Two", True, (250, 220, 5))
-	winsText = font1.render("Wins!", True, (250, 220, 5))
-	youWinsText = font1.render("You Win!", True, (250, 220, 5))
-	youLoseText = font1.render("You lose!", True, (250, 220, 5))
 	font2 = pygame.font.SysFont(font, 60)
 	playAgainText = font2.render("Play Again", True, (250, 220, 5))
 	background = pygame.image.load('board.png')
 	pygame.transform.scale(background, (swidth, sheight), screen)
-	screen.blit(p1Text, (25, 50))
-	screen.blit(winsText, (150, 175))
 	pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(150, 400, 300, 100))
 	screen.blit(playAgainText, (190, 425))
+
+	#choose which one based on passed in parameters
+	if winner == 1:
+		p1Text = font1.render("Player One", True, (250, 220, 5))
+		winsText = font1.render("Wins!", True, (250, 220, 5))
+		screen.blit(p1Text, (25, 50))
+		screen.blit(winsText, (150, 175))
+	else if winner == 2:
+		p2Text = font1.render("Player Two", True, (250, 220, 5))
+		winsText = font1.render("Wins!", True, (250, 220, 5))
+		screen.blit(p2Text, (25, 50))
+		screen.blit(winsText, (150, 175))
+	else if winner == 3:
+		youWinText = font1.render("You win!", True, (250, 220, 5))
+	else if winner == 4:
+		youLoseText = font1.render("You lose!", True, (250, 220, 5))
+
+#	p1Text = font1.render("Player One", True, (250, 220, 5))
+#	p2Text = font1.render("Player Two", True, (250, 220, 5))
+#	winsText = font1.render("Wins!", True, (250, 220, 5))
+#	youWinsText = font1.render("You Win!", True, (250, 220, 5))
+#	youLoseText = font1.render("You lose!", True, (250, 220, 5))
+#	font2 = pygame.font.SysFont(font, 60)
+#	playAgainText = font2.render("Play Again", True, (250, 220, 5))
+#	background = pygame.image.load('board.png')
+#	pygame.transform.scale(background, (swidth, sheight), screen)
+#	screen.blit(p1Text, (25, 50))
+#	screen.blit(winsText, (150, 175))
+#	pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(150, 400, 300, 100))
+#	screen.blit(playAgainText, (190, 425))
+
+
+
 	
-while not done:
-	for event in pygame.event.get():
-		if event.type == pygame.QUIT:
-			done = True
-	#homeScreen()
-	resultScreen()
-	pygame.display.flip
+#while not done:
+#	for event in pygame.event.get():
+#		if event.type == pygame.QUIT:
+#			done = True
+#	#homeScreen()
+#	resultScreen()
+#	pygame.display.flip
