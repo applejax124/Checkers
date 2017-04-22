@@ -32,6 +32,9 @@ class piece:
     def getType(self):
         return self.type
 
+    def setType(self, t):
+        self.type = t
+
     def setCell(self, c):
         self.cell = c
 
