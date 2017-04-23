@@ -79,6 +79,7 @@ def resultScreen(winner):
 #	screen.blit(playAgainText, (190, 425))
 
 	
+<<<<<<< HEAD
 while not done:
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT:
@@ -87,3 +88,18 @@ while not done:
 			#homeScreen()
 			resultScreen(3)
 		pygame.display.flip
+=======
+#while not done:
+#	for event in pygame.event.get():
+#		if event.type == pygame.QUIT:
+#			done = True
+<<<<<<< HEAD
+#	#homeScreen()
+#	resultScreen()
+#	pygame.display.flip
+=======
+	#homeScreen()
+#	resultScreen(1)
+#	pygame.display.flip
+>>>>>>> cf004484a8e637193404a3a1063c4d88797b094c
+>>>>>>> 3ec2c4de2bd9d1b7b3c94596d1a3d57062f7e19b
