@@ -1,6 +1,9 @@
 #!~pbui/pub/anaconda2-4.1.1/bin
 
 import pygame
+import findCell
+import classes
+import gameplay
 
 def board():
    #quit button
@@ -21,13 +24,13 @@ def board():
 
 def pieces():
    for i in range(32):
-      if board.b[i] != ' ': #piece is filled
-	 for key, value in cells.items():
+      if classes.board.b[i] != ' ': #piece is filled
+	 for key, value in findCell.cells.items():
 	    if value is i:
 	       x, y = key
-         if board.b[i] == 'r' or board.b[i] == 'rk': pygame.draw.circle(screen,(255,0,0),(x+40, y+40),20)
-         if board.b[i] == 'b' or board.b[i] == 'bk': pygame.draw.circle(screen,(0,0,0),(x+40, y+40),20)
-         if board.b[i] == 'rk' or board.b[i] == 'bk': 
+         if classes.board.b[i] == 'r' or classes.board.b[i] == 'rk': pygame.draw.circle(screen,(255,0,0),(x+40, y+40),20)
+         if classes.board.b[i] == 'b' or classes.board.b[i] == 'bk': pygame.draw.circle(screen,(0,0,0),(x+40, y+40),20)
+         if classes.board.b[i] == 'rk' or classes.board.b[i] == 'bk': 
             font = pygame.font.Font(None, 24)
             text = font.render("K",True,(0,0,0))
             screen.blit(text, (x+50, y+50))
@@ -46,14 +49,14 @@ def playGame(playernum):
          for event in pygame.event.get():
             if event.type==pygame.KEYDOWN and pygame.mouse.get_pressed()[0]:
 	       (x,y) = pygame.mouse.get_pos()
-               cell = checkCell(x,y) #get board square number w func and pygame.mouse.get_pos()
-	       if cell >= 1 and cell <= 32 and board.b[cell] != ' ':
+               cell = findCell.checkCell(x,y) #get board square number w func and pygame.mouse.get_pos()
+	       if cell >= 1 and cell <= 32 and classes.board.b[cell] != ' ':
 	          pygame.draw.circle(screen,(255,255,0),(x+40, y+40),20)
 	          moveSelect = False
-	          while (!moveSelect):
+	          while not moveSelect:
 	             if event.type==pygame.KEYDOWN and pygame.mouse.get_pressed()[0]:
 		        (x,y) = pygame.mouse.get_pos()
-		        cell2 = checkCell(x,y)#get board sqaure number
+		        cell2 = findCell.checkCell(x,y)#get board sqaure number
 	                moveSelect = True
 	          pygame.draw.rect(screen,(255,255,0),pygame.Rect(x,y,80,80))
 	    
@@ -65,8 +68,9 @@ def playGame(playernum):
 	
             (x,y) = pygame.mouse.get_pos()
             if x >= 730 and x <= 780 and y >= 740 and y <= 760:
+	       return 0
                play = False
-            if winner(
+            if gameplay.winner:
 	       return 1 #or 2
 	       play = False
 
