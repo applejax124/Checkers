@@ -93,10 +93,6 @@ while not done:
 #	for event in pygame.event.get():
 #		if event.type == pygame.QUIT:
 #			done = True
-<<<<<<< HEAD
-<<<<<<< HEA
-=======
->>>>>>> 96d8ab394135d18b4c68dc110a79fa383100b9fb
 #	#homeScreen()
 #	resultScreen()
 #	pygame.display.flip
