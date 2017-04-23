@@ -5,9 +5,18 @@ import classes
 import gameplay
 import pygame
 
+<<<<<<< HEAD
+if __name__ == '__main__':
+	screens1.homeScreen()
+	#if mouse click in Two Players then display board
 
+	checkersBoard.board(square)
+
+=======
+
+>>>>>>> 1a8c5389215de19ac6bb1cf526c808b52e708fac
 def getClick():
-	for event in pygame.event.get()
+	for event in pygame.event.get():
 		if event.type == pygame.KEYDOWN and pygame.mouse.get_pressed()[0]:
 			(x, y) = pygame.mouse.get_pos()
 			return (x, y)
@@ -45,4 +54,7 @@ if __name__ == '__main__':
 	screens1.resultScreen(winner)
 
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> 1a8c5389215de19ac6bb1cf526c808b52e708fac
