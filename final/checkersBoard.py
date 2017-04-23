@@ -59,20 +59,20 @@ def playGame(playernum):
 		        cell2 = findCell.checkCell(x,y)#get board sqaure number
 	                moveSelect = True
 	          pygame.draw.rect(screen,(255,255,0),pygame.Rect(x,y,80,80))
-	    
- 	          #send board number to game play
-	          #if move is valid change piece position in dictionary 
+		  if gameplay.validMove(classes.board.b[cell], classes.board.b[cell2], classes.board):
+		     classes.board.movePiece(self,classes.board.b[cell2], classes.board.b[cell])	    
 	          screen.fill((0,0,0))
 	          board()
 	          pieces()
 	
             (x,y) = pygame.mouse.get_pos()
             if x >= 730 and x <= 780 and y >= 740 and y <= 760:
-	       return 0
                play = False
-            if gameplay.winner:
-	       return 1 #or 2
+	       return 0
+            if gameplay.winner(classes.board.b[cell2].type, pieceCount(classes.board.b[cell2].type, classes.board)):
 	       play = False
+	       if classes.board.b[cell2] == 'r' or classes.board.b[cell2] == 'rk': return 1
+	       elif classes.board.b[cell2] == 'b' or classes.board.b[cell2] == 'bk': return 2
 
             #clock.tick(60)
             pygame.display.flip()
