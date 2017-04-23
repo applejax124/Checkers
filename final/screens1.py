@@ -59,8 +59,10 @@ def resultScreen(winner):
 		screen.blit(winsText, (150, 175))
 	elif winner == 3:
 		youWinText = font1.render("You win!", True, (250, 220, 5))
+		screen.blit(youWinText, (85, 150))
 	elif winner == 4:
 		youLoseText = font1.render("You lose!", True, (250, 220, 5))
+		screen.blit(youLoseText, (85, 150))
 
 #	p1Text = font1.render("Player One", True, (250, 220, 5))
 #	p2Text = font1.render("Player Two", True, (250, 220, 5))
@@ -76,13 +78,12 @@ def resultScreen(winner):
 #	pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(150, 400, 300, 100))
 #	screen.blit(playAgainText, (190, 425))
 
-
-
 	
 while not done:
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT:
 			done = True
-	#homeScreen()
-	resultScreen(1)
-	pygame.display.flip
+		else: 
+			#homeScreen()
+			resultScreen(3)
+		pygame.display.flip
