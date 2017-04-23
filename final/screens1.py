@@ -1,16 +1,16 @@
 #!~pbui/pub/anaconda2-4.1.1/bin
 
-import pygame
+#import pygame
 
-pygame.init()
-swidth = 600
-sheight = 600
+#pygame.init()
+#swidth = 600
+#sheight = 600
 
-screen = pygame.display.set_mode((swidth, sheight))
-clock = pygame.time.Clock()
-done = False
+#screen = pygame.display.set_mode((swidth, sheight))
+#clock = pygame.time.Clock()
+#done = False
 
-def homeScreen():
+def homeScreen(screen):
 	pygame.font.init()
 	#background = pygame.Surface((swidth, sheight))
 	#font = "comicsansms"
@@ -35,7 +35,7 @@ def homeScreen():
 	screen.blit(groupText2, (5, 550))
 	
 #pass in results and this will display them based off of that
-def resultScreen(winner):
+def resultScreen(winner, screen):
 	pygame.font.init()
 	font = "forque"
 	font1 = pygame.font.SysFont(font, 150)
