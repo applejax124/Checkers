@@ -30,7 +30,7 @@ def homeScreen():
 	pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(25, 275, 235, 90))
 	screen.blit(player1Text, (50, 300))
 	pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(325, 275, 245, 90))
-	creen.blit(player2Text, (350, 300))
+	screen.blit(player2Text, (350, 300))
 	screen.blit(groupText1, (105, 500))
 	screen.blit(groupText2, (5, 550))
 	
@@ -79,27 +79,14 @@ def resultScreen(winner):
 #	screen.blit(playAgainText, (190, 425))
 
 	
-<<<<<<< HEAD
-while not done:
-	for event in pygame.event.get():
-		if event.type == pygame.QUIT:
-			done = True
-		else: 
-			#homeScreen()
-			resultScreen(3)
-		pygame.display.flip
-=======
+
 #while not done:
 #	for event in pygame.event.get():
 #		if event.type == pygame.QUIT:
 #			done = True
-<<<<<<< HEAD
-#	#homeScreen()
-#	resultScreen()
+#		else: 
+#			homeScreen()
+			#resultScreen(4)
 #	pygame.display.flip
-=======
-	#homeScreen()
-#	resultScreen(1)
-#	pygame.display.flip
->>>>>>> cf004484a8e637193404a3a1063c4d88797b094c
->>>>>>> 3ec2c4de2bd9d1b7b3c94596d1a3d57062f7e19b
+
+
