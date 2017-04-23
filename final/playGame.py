@@ -23,6 +23,7 @@ if __name__ == '__main__':
 
 	screens1.homeScreen(screen)
 
+
 	#check if mouse clicks one of the buttons
 	clicked = false
 	playerNum = 0
@@ -36,11 +37,10 @@ if __name__ == '__main__':
 			if y >= 275 and y <= 365:
 				playerNum = 2
 				clicked = true
-	
-	
+
+
 	#play game
 	winner = checkersBoard.playGame(playerNum, screen)
-
 	#show win/lose screen 1: P1 Wins, 2: P2 Wins, 3: You win, 4: You lose
 	screens1.resultScreen(winner)
 
