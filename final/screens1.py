@@ -83,7 +83,7 @@ def resultScreen(winner):
 #	for event in pygame.event.get():
 #		if event.type == pygame.QUIT:
 #			done = True
-<<<<<<< HEAD
+<<<<<<< HEA
 #	#homeScreen()
 #	resultScreen()
 #	pygame.display.flip

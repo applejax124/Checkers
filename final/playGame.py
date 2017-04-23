@@ -1,19 +1,18 @@
-from folder import screens1
-from folder import checkersBoard
-from folder import findCell
-from folder import classes
-from folder import gameplay
+import screens1
+import checkersBoard
+import findCell
+import classes
+import gameplay
 import pygame
 
-<<<<<<< HEAD
 if __name__ == '__main__':
 	screens1.homeScreen()
 	#if mouse click in Two Players then display board
 
 	checkersBoard.board(square)
-=======
+
 def getClick():
-	for event in pygame.event.get()
+	for event in pygame.event.get():
 		if event.type == pygame.KEYDOWN and pygame.mouse.get_pressed()[0]:
 			(x, y) = pygame.mouse.get_pos()
 			return (x, y)
@@ -46,4 +45,3 @@ if __name__ == '__main__':
 	screens1.resultScreen(winner)
 
 
->>>>>>> c9162ef8dda95b1e453819cd55a4ea3a50ae5193
