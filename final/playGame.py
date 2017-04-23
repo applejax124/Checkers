@@ -3,6 +3,7 @@ from folder import checkersBoard
 from folder import findCell
 from folder import classes
 from folder import gameplay
+import pygame
 
 <<<<<<< HEAD
 if __name__ == '__main__':
