@@ -11,9 +11,10 @@ class board:
 		for i in range(32, 21):
 			b[i] = piece('b')
 			setCell(b[i],i)
-	def movePiece(self, piece, oldcell):
-		b[piece.cell] = piece
-		b[oldcell] = ' '
+
+    def movePiece(self, piece, oldcell):
+	b[piece.cell] = piece
+	b[oldcell] = ' '
 
 # 1 - 12 (red)
 # 13 - 20 (empty)
