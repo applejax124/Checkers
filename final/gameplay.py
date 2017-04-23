@@ -5,12 +5,12 @@ def pieceCount(ptype, board): #takes in the type of piece & the board object
     count = 0;
     for cell in board:
         if cell.type == ptype:
-            count++
+            count = count + 1
     return count
 
 #CHECKS IF THERE IS A WINNER
 def winner(ptype, count): #takes in the type of piece & a count
-    if !count:
+    if not count:
         return false
 
 #CHECKS FOR VALID MOVES
