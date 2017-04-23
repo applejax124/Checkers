@@ -5,7 +5,7 @@ import findCell
 import classes
 import gameplay
 
-def board():
+def boardC(screen, board):
    #quit button
    pygame.draw.rect(screen,(255,255,255),pygame.Rect(730,740,50,20))
    font = pygame.font.Font(None, 24)
@@ -22,18 +22,22 @@ def board():
          pygame.draw.rect(screen,color,pygame.Rect(x,y,80,80))
 	 colorAlt+=1
 
-def pieces():
-   for i in range(32):
-      if classes.board.b[i] != ' ': #piece is filled
+def pieces(screen, board):
+   print "hey"
+   for i in range(1,33):
+      print "sup"
+      if board.b[i] != ' ': #piece is filled
+	 print "hi"
 	 for key, value in findCell.cells.items():
 	    if value is i:
 	       x, y = key
-         if classes.board.b[i] == 'r' or classes.board.b[i] == 'rk': pygame.draw.circle(screen,(255,0,0),(x+40, y+40),20)
-         if classes.board.b[i] == 'b' or classes.board.b[i] == 'bk': pygame.draw.circle(screen,(0,0,0),(x+40, y+40),20)
-         if classes.board.b[i] == 'rk' or classes.board.b[i] == 'bk': 
+         if board.b[i] == 'r' or board.b[i] == 'rk': pygame.draw.circle(screen,(255,0,0),(x+40, y+40),20)
+         if board.b[i] == 'b' or board.b[i] == 'bk': pygame.draw.circle(screen,(0,0,0),(x+40, y+40),20)
+         if board.b[i] == 'rk' or board.b[i] == 'bk': 
             font = pygame.font.Font(None, 24)
             text = font.render("K",True,(0,0,0))
             screen.blit(text, (x+50, y+50))
+      else: print "hey"
 
 def playGame(playernum):
    if playernum==2:
@@ -42,15 +46,18 @@ def playGame(playernum):
       play = True
       clock = pygame.time.Clock()
 
-      board()
-      pieces()
+      cell2 = 0
+      gameBoard = classes.board() 
+      boardC(screen, gameBoard)
+      print "yo"
+      #pieces(screen, gameBoard)
 
       while (play):
          for event in pygame.event.get():
             if event.type==pygame.KEYDOWN and pygame.mouse.get_pressed()[0]:
 	       (x,y) = pygame.mouse.get_pos()
                cell = findCell.checkCell(x,y) #get board square number w func and pygame.mouse.get_pos()
-	       if cell >= 1 and cell <= 32 and classes.board.b[cell] != ' ':
+	       if cell >= 1 and cell <= 32 and board.b[cell] != ' ':
 	          pygame.draw.circle(screen,(255,255,0),(x+40, y+40),20)
 	          moveSelect = False
 	          while not moveSelect:
@@ -59,21 +66,22 @@ def playGame(playernum):
 		        cell2 = findCell.checkCell(x,y)#get board sqaure number
 	                moveSelect = True
 	          pygame.draw.rect(screen,(255,255,0),pygame.Rect(x,y,80,80))
-		  if gameplay.validMove(classes.board.b[cell], classes.board.b[cell2], classes.board):
-		     classes.board.movePiece(self,classes.board.b[cell2], classes.board.b[cell])	    
+		  if gameplay.validMove(gameBoard.b[cell], gameBoard.b[cell2], gameBoard):
+		     gameBoard.movePiece(gameBoard.b[cell2], gameBoard.b[cell])	    
 	          screen.fill((0,0,0))
-	          board()
-	          pieces()
+	          boardC(screen, gameBoard)
+	          pieces(screen, gameBoard)
 	
             (x,y) = pygame.mouse.get_pos()
             if x >= 730 and x <= 780 and y >= 740 and y <= 760:
                play = False
 	       return 0
-            if gameplay.winner(classes.board.b[cell2].type, pieceCount(classes.board.b[cell2].type, classes.board)):
+            if cell2 and gameplay.winner(gameBoard.b[cell2].type, pieceCount(gameBoard.b[cell2].type, gameBoard)):
 	       play = False
-	       if classes.board.b[cell2] == 'r' or classes.board.b[cell2] == 'rk': return 1
-	       elif classes.board.b[cell2] == 'b' or classes.board.b[cell2] == 'bk': return 2
+	       if gameBoard.b[cell2] == 'r' or gameBoard.b[cell2] == 'rk': return 1
+	       elif gameBoard.b[cell2] == 'b' or gameBoard.b[cell2] == 'bk': return 2
 
-            #clock.tick(60)
+            clock.tick(5)
             pygame.display.flip()
 
+playGame(2)
