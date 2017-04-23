@@ -43,7 +43,7 @@ def playGame(playernum):
       clock = pygame.time.Clock()
 
       board()
-      pieces()
+      pieces() 
 
       while (play):
          for event in pygame.event.get():
@@ -61,6 +61,7 @@ def playGame(playernum):
 	          pygame.draw.rect(screen,(255,255,0),pygame.Rect(x,y,80,80))
 	    
  	          #send board number to game play
+                  
 	          #if move is valid change piece position in dictionary 
 	          screen.fill((0,0,0))
 	          board()
