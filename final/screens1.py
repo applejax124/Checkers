@@ -77,10 +77,10 @@ def resultScreen(winner):
 
 
 	
-#while not done:
-#	for event in pygame.event.get():
-#		if event.type == pygame.QUIT:
-#			done = True
+while not done:
+	for event in pygame.event.get():
+		if event.type == pygame.QUIT:
+			done = True
 #	#homeScreen()
 #	resultScreen()
 #	pygame.display.flip

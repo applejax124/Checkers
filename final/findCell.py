@@ -15,12 +15,11 @@ tuples = [(160, 80), (320, 80), (480, 80), (640, 80),
 		(160, 560), (320, 560), (480, 560), (640, 560),
 		(80, 640), (240, 640), (400, 640), (560, 640)]
 
-<<<<<<< HEAD
 # assigns a value (1 - 32, number of valid spaces on the board) to each pixel x-y pair on the board
 for i in range(1, len(tuples) + 1):
 	cells[i] = tuples[i-1]
-	print("{} : {}" .format(i, cells[i]))
-=======
+	#print("{} : {}" .format(i, cells[i]))
+
 #for i in range(1, len(tuples) + 1):
 #	cells[i] = tuples[i-1]
 #	print("{} : {}" .format(i, cells[i]))
@@ -43,9 +42,7 @@ def checkCell(mouseX, mouseY):
 	return 0
 
 #testing the function
-print(checkCell(0, 0))
-print(checkCell(200, 100))
-print(checkCell(200, 250))
+#print(checkCell(0, 0))
+#print(checkCell(200, 100))
+#print(checkCell(200, 250))
 
-
->>>>>>> 4e13734d8163e634f0ab0701ece5a77808b9b5ed
