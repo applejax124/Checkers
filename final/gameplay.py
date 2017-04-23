@@ -10,11 +10,7 @@ def pieceCount(ptype, board): #takes in the type of piece & the board object
 
 #CHECKS IF THERE IS A WINNER
 def winner(ptype, count): #takes in the type of piece & a count
-<<<<<<< HEAD
-    if not count:
-=======
     if count == 0:
->>>>>>> 57e295ed7648567e780b445447e594549fcdc5b3
         return false
 
 #CHECKS FOR VALID MOVES

@@ -1,6 +1,6 @@
 #!~pbui/pub/anaconda2-4.1.1/bin
 
-#import pygame
+import pygame
 
 #pygame.init()
 #swidth = 600

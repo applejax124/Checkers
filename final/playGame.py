@@ -1,3 +1,5 @@
+#!~pbui/pub/anaconda2-4.1.1/bin
+
 import screens1
 import checkersBoard
 import findCell
@@ -5,16 +7,13 @@ import classes
 import gameplay
 import pygame
 
-<<<<<<< HEAD
+
 if __name__ == '__main__':
-	screens1.homeScreen()
+	screens1.homeScreen(1)
 	#if mouse click in Two Players then display board
 
 	checkersBoard.board(square)
 
-=======
-
->>>>>>> 1a8c5389215de19ac6bb1cf526c808b52e708fac
 def getClick():
 	for event in pygame.event.get():
 		if event.type == pygame.KEYDOWN and pygame.mouse.get_pressed()[0]:
@@ -54,7 +53,3 @@ if __name__ == '__main__':
 	screens1.resultScreen(winner)
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 1a8c5389215de19ac6bb1cf526c808b52e708fac
