@@ -1,3 +1,5 @@
+#!~pbui/pub/anaconda2-4.1.1/bin
+
 import pygame
 
 pygame.init()
@@ -77,10 +79,10 @@ def resultScreen(winner):
 
 
 	
-#while not done:
-#	for event in pygame.event.get():
-#		if event.type == pygame.QUIT:
-#			done = True
-#	#homeScreen()
-#	resultScreen()
-#	pygame.display.flip
+while not done:
+	for event in pygame.event.get():
+		if event.type == pygame.QUIT:
+			done = True
+	#homeScreen()
+	resultScreen(1)
+	pygame.display.flip
