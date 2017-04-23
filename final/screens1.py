@@ -1,3 +1,5 @@
+#!~pbui/pub/anaconda2-4.1.1/bin
+
 import pygame
 
 pygame.init()
@@ -50,14 +52,14 @@ def resultScreen(winner):
 		winsText = font1.render("Wins!", True, (250, 220, 5))
 		screen.blit(p1Text, (25, 50))
 		screen.blit(winsText, (150, 175))
-	else if winner == 2:
+	elif winner == 2:
 		p2Text = font1.render("Player Two", True, (250, 220, 5))
 		winsText = font1.render("Wins!", True, (250, 220, 5))
 		screen.blit(p2Text, (25, 50))
 		screen.blit(winsText, (150, 175))
-	else if winner == 3:
+	elif winner == 3:
 		youWinText = font1.render("You win!", True, (250, 220, 5))
-	else if winner == 4:
+	elif winner == 4:
 		youLoseText = font1.render("You lose!", True, (250, 220, 5))
 
 #	p1Text = font1.render("Player One", True, (250, 220, 5))
@@ -77,10 +79,10 @@ def resultScreen(winner):
 
 
 	
-#while not done:
-#	for event in pygame.event.get():
-#		if event.type == pygame.QUIT:
-#			done = True
-#	#homeScreen()
-#	resultScreen()
-#	pygame.display.flip
+while not done:
+	for event in pygame.event.get():
+		if event.type == pygame.QUIT:
+			done = True
+	#homeScreen()
+	resultScreen(1)
+	pygame.display.flip
