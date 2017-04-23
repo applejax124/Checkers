@@ -43,7 +43,7 @@ def playGame(playernum):
       clock = pygame.time.Clock()
 
       board()
-      pieces()
+      pieces() 
 
       while (play):
          for event in pygame.event.get():
@@ -59,8 +59,15 @@ def playGame(playernum):
 		        cell2 = findCell.checkCell(x,y)#get board sqaure number
 	                moveSelect = True
 	          pygame.draw.rect(screen,(255,255,0),pygame.Rect(x,y,80,80))
+<<<<<<< HEAD
 		  if gameplay.validMove(classes.board.b[cell], classes.board.b[cell2], classes.board):
 		     classes.board.movePiece(self,classes.board.b[cell2], classes.board.b[cell])	    
+=======
+	    
+ 	          #send board number to game play
+                  
+	          #if move is valid change piece position in dictionary 
+>>>>>>> 1a8c5389215de19ac6bb1cf526c808b52e708fac
 	          screen.fill((0,0,0))
 	          board()
 	          pieces()

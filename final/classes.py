@@ -2,19 +2,19 @@
 
 class board:
     def __init__(self):
-        b = []
-        for i in [1 2 3 4 5 6 7 8 9 10 11 12]:
-            b[i] = piece('r')
-            setCell(b[i],i)
-        for i in [13 14 15 16 17 18 19 20]:
-            b[i] = ' '
-        for i in [21 22 23 24 25 26 27 28 29 30 31 32]:
-            b[i] = piece('b')
-            setCell(b[i],i)
+		b = []
+		for i in range(12, 1):
+			b[i] = piece('r')
+			setCell(b[i], i)
+		for i in range(20,13):
+			b[i] = ' '
+		for i in range(32, 21):
+			b[i] = piece('b')
+			setCell(b[i],i)
 
     def movePiece(self, piece, oldcell):
-        b[piece.cell] = piece
-        b[oldcell] = ' '
+	b[piece.cell] = piece
+	b[oldcell] = ' '
 
 # 1 - 12 (red)
 # 13 - 20 (empty)
