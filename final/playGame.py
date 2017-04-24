@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+#!~pbui/pub/anaconda2-4.1.1/bin
+>>>>>>> f0bc5ea6af4a0fb31a63bbf1dbc59792fe10b089
 
 import screens1
 import checkersBoard
@@ -8,7 +12,7 @@ import pygame
 
 
 if __name__ == '__main__':
-	screens1.homeScreen()
+	screens1.homeScreen(1)
 	#if mouse click in Two Players then display board
 
 	checkersBoard.board(square)
@@ -51,3 +55,7 @@ if __name__ == '__main__':
 	#show win/lose screen 1: P1 Wins, 2: P2 Wins, 3: You win, 4: You lose
 	screens1.resultScreen(winner)
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> f0bc5ea6af4a0fb31a63bbf1dbc59792fe10b089

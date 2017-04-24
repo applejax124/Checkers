@@ -84,9 +84,9 @@ while not done:
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT:
 			done = True
-		else: 
-			homeScreen(screen)
-			resultScreen(4, screen)
-	pygame.display.flip
 
+	homeScreen(screen)
+	resultScreen(4, screen)
+	pygame.display.flip
+	clock.tick(60)
 
