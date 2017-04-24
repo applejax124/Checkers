@@ -23,11 +23,8 @@ def boardC(screen, board):
 	 colorAlt+=1
 
 def pieces(screen, board):
-   print "hey"
    for i in range(1,33):
-      print "sup"
       if board.b[i] != ' ': #piece is filled
-	 print "hi"
 	 for key, value in findCell.cells.items():
 	    if value is i:
 	       x, y = key
@@ -49,7 +46,6 @@ def playGame(playernum):
       cell2 = 0
       gameBoard = classes.board() 
       boardC(screen, gameBoard)
-      print "yo"
       #pieces(screen, gameBoard)
 
       while (play):
@@ -84,4 +80,4 @@ def playGame(playernum):
             clock.tick(5)
             pygame.display.flip()
 
-playGame(2)
+#playGame(2)

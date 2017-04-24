@@ -2,13 +2,13 @@
 
 import pygame
 
-pygame.init()
-swidth = 800
-sheight = 800
+#pygame.init()
+#swidth = 800
+#sheight = 800
 
-screen = pygame.display.set_mode((swidth, sheight))
-clock = pygame.time.Clock()
-done = False
+#screen = pygame.display.set_mode((swidth, sheight))
+#clock = pygame.time.Clock()
+#done = False
 
 def homeScreen(screen):
 	pygame.font.init()
@@ -24,7 +24,7 @@ def homeScreen(screen):
 	groupText1 = font3.render("Group Members: Cami Carballo", True, (66, 8, 165))
 	groupText2 = font3.render("Kendyll, Kraus, Allison Raines, Anna Smith", True, (66, 8, 165))
 	background = pygame.image.load('board.png')
-	pygame.transform.scale(background, (swidth, sheight), screen)
+	pygame.transform.scale(background, (800, 800), screen)
 	#screen.draw.text("Checkers", (25, 50), owidth=1, ocolor=(0, 0, 0))
 	screen.blit(checkersText, (30, 100))
 	pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(50, 425, 300, 120))
@@ -42,7 +42,7 @@ def resultScreen(winner, screen):
 	font2 = pygame.font.SysFont(font, 100)
 	playAgainText = font2.render("Play Again", True, (250, 220, 5))
 	background = pygame.image.load('board.png')
-	pygame.transform.scale(background, (swidth, sheight), screen)
+	pygame.transform.scale(background, (800, 800), screen)
 	pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(150, 450, 500, 200))
 	screen.blit(playAgainText, (225, 510))
 
@@ -80,13 +80,13 @@ def resultScreen(winner, screen):
 
 	
 
-while not done:
-	for event in pygame.event.get():
-		if event.type == pygame.QUIT:
-			done = True
-
-	homeScreen(screen)
-	resultScreen(4, screen)
-	pygame.display.flip
-	clock.tick(60)
+#while not done:
+#	for event in pygame.event.get():
+#		if event.type == pygame.QUIT:
+#			done = True
+#
+#	homeScreen(screen)
+#	resultScreen(4, screen)
+#	pygame.display.flip
+#	clock.tick(60)
 
