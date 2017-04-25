@@ -19,7 +19,7 @@ def board():
          pygame.draw.rect(screen,color,pygame.Rect(x,y,80,80))
 	 colorAlt+=1
 
-def pieces():
+def pieces(board):
    for i in range(32):
       if board.b[i] != ' ': #piece is filled
 	 for key, value in cells.items():

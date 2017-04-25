@@ -7,7 +7,7 @@ import pygame
 #sheight = 800
 
 #screen = pygame.display.set_mode((swidth, sheight))
-#clock = pygame.time.Clock()
+clock = pygame.time.Clock()
 #done = False
 
 def homeScreen(screen):
@@ -78,7 +78,7 @@ def resultScreen(winner, screen):
 #	pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(150, 400, 300, 100))
 #	screen.blit(playAgainText, (190, 425))
 
-	
+clock.tick(5)	
 
 #while not done:
 #	for event in pygame.event.get():
