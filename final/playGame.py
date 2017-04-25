@@ -8,28 +8,12 @@ import gameplay
 import pygame
 
 
-#if __name__ == '__main__':
-#	pygame.init()
-#	swidth = 800
-#	sheight = 800
-
-#	screen = pygame.display.set_mode((swidth, sheight))
-#	clock = pygame.time.Clock()
-	#done = False
-
-
-#	screens1.homeScreen(screen)
-	#if mouse click in Two Players then display board
-
-	#checkersBoard.board(square)
-
-def getClick():
-	for event in pygame.event.get():
-		tupleXY = (0, 0);
-		if event.type == pygame.KEYDOWN and pygame.mouse.get_pressed()[0]:
-			tupleXY = pygame.mouse.get_pos()
-			return tupleXY
-
+#def getClick():
+#	for event in pygame.event.get():
+#		tupleXY = (0, 0);
+#		if event.type == pygame.KEYDOWN and pygame.mouse.get_pressed()[0]:
+#			tupleXY = pygame.mouse.get_pos()
+#			return tupleXY
 
 if __name__ == '__main__':
 	pygame.init()
