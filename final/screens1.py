@@ -12,8 +12,6 @@ clock = pygame.time.Clock()
 
 def homeScreen(screen):
 	pygame.font.init()
-	#background = pygame.Surface((swidth, sheight))
-	#font = "comicsansms"
 	font = "forque"
 	font1 = pygame.font.SysFont(font, 230)
 	checkersText = font1.render("Checkers", True, (250, 220, 5))
@@ -25,7 +23,6 @@ def homeScreen(screen):
 	groupText2 = font3.render("Kendyll, Kraus, Allison Raines, Anna Smith", True, (66, 8, 165))
 	background = pygame.image.load('board.png')
 	pygame.transform.scale(background, (800, 800), screen)
-	#screen.draw.text("Checkers", (25, 50), owidth=1, ocolor=(0, 0, 0))
 	screen.blit(checkersText, (30, 100))
 	pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(50, 425, 300, 120))
 	screen.blit(player1Text, (85, 465))
