@@ -1,9 +1,9 @@
 #!~pbui/pub/anaconda2-4.1.1/bin
 
 import pygame
-import findCell
-import classes
-import gameplay
+from . import findCell.py
+from . import classes.py
+from . import gameplay.py
 
 def board():
    #quit button

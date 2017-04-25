@@ -1,6 +1,6 @@
 #!/usr/bin/env python2.7
 
-from folder import gameplay.py
+from . import gameplay.py
 
 # Find where the piece is on the board and check to see which moves are valid (can the piece move to the left or the right diagonally?) 
 def choosePiece():
