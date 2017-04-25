@@ -1,10 +1,10 @@
 #!~pbui/pub/anaconda2-4.1.1/bin
 
-import screens1
-import checkersBoard
-import findCell
-import classes
-import gameplay
+from . import screens1.py
+from . import checkersBoard.py
+from . import findCell.py
+from . import classes.py
+from . import gameplay.py
 import pygame
 
 
@@ -21,7 +21,7 @@ if __name__ == '__main__':
 	while not clicked:
 		for event in pygame.event.get():
 			tupleXY = (0, 0)
-			if event.type == pygame.MOUSEBUTTONUP:
+			if event.type == pygame.MOUSEBUTTONUP and pygame.mouse.get_pressed()[0]:
 				tupleXY = pygame.mouse.get_pos()
 				x = tupleXY[0]
 				y = tupleXY[1]
