@@ -7,18 +7,15 @@ import classes
 import gameplay
 import pygame
 
-
-if __name__ == '__main__':
+def main():
 	pygame.init()
 	screen = pygame.display.set_mode((800, 800))
 	clock = pygame.time.Clock()
 
-        #print "homescreen should come up"
 	screens1.homeScreen(screen)
         pygame.display.flip()
-        #print "after homescreen"
 
-	#check if mouse clicks one of the buttons
+	#mouse click on home screen
 	clicked = False
 	playerNum = 0
 	while not clicked:
@@ -40,7 +37,28 @@ if __name__ == '__main__':
 
 	#play game
         checkersBoard.playGame(2)
-	#show win/lose screen 1: P1 Wins, 2: P2 Wins, 3: You win, 4: You lose
-	screens1.resultScreen(1, screen)
 
+	#results screen
+	screens1.resultScreen(1, screen)
+        pygame.display.flip()
+
+        #mouse click on results screen
+        clicked2 = False
+        while not clicked2:
+                for event in pygame.event.get():
+                        tupleXY = (0, 0)
+                        if event.type == pygame.MOUSEBUTTONUP:
+                                tupleXY = pygame.mouse.get_pos()
+                                x = tupleXY[0]
+                                y = tupleXY[1]
+                                if x >= 150 and x <= 450:
+                                        if y >= 200 and y <= 500:
+                                                clicked2 = True
+                                                main()
+                        if event.type == pygame.KEYDOWN and pygame.key.get_pressed()[pygame.K_q] != 0:
+                            clicked2 = True
+
+
+if __name__ == '__main__':
+    main()
 

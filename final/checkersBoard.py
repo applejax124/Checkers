@@ -4,6 +4,7 @@ import pygame
 import findCell
 import classes
 import gameplay
+import screens1
 
 def boardC(screen, board):
    #quit button
@@ -27,14 +28,14 @@ def pieces(screen, board):
 	for key, value in findCell.cells.items():
             if value == block.cell:
                 x, y = key
-            if block == 'r':
-                pygame.draw.circle(screen, (250, 0, 0), (x+40, y+40), 20)
-            if block == 'rk':
-                pygame.draw.circle(screen,(153,0,0),(x+40, y+40),20)
-            if block == 'b':
-                pygame.draw.circle(screen, (0, 0, 0), (x+40, y+40), 20)
-            if block == 'bk': 
-                pygame.draw.circle(screen,(64, 64, 64),(x+40, y+40),20)
+                if block.type == 'r':
+                    pygame.draw.circle(screen, (250, 0, 0), (x+40, y+40), 20)
+                if block.type == 'rk':
+                    pygame.draw.circle(screen,(153,0,0),(x+40, y+40),20)
+                if block.type == 'b':
+                    pygame.draw.circle(screen, (0, 0, 0), (x+40, y+40), 20)
+                if block.type == 'bk': 
+                    pygame.draw.circle(screen,(64, 64, 64),(x+40, y+40),20)
 
 
 def playGame(playernum):
@@ -45,42 +46,46 @@ def playGame(playernum):
 	clock = pygame.time.Clock()
 
 	#cell2 = 0
-	gameBoard = classes.board() 
+	gameBoard = classes.board()
 	boardC(screen, gameBoard)
 	pieces(screen, gameBoard)
 	pygame.display.flip()
 
-        while (play):
+        moveSelect = True
 
-	    moveSelect = True
+        while (play):
 
     	    for event in pygame.event.get():
 
+                #quit the game
+                if event.type==pygame.MOUSEBUTTONUP:
+                    (s, y) = pygame.mouse.get_pos()
+                    if s >= 730 and s <= 780 and y >= 740 and y <= 760:
+                        play = False
+                        continue
+
                 #highlighting/select piece
-                if event.type==pygame.MOUSEBUTTONUP and pygame.mouse.get_pressed()[0] and moveSelect:
+                if event.type==pygame.MOUSEBUTTONUP and moveSelect:
     		    (x,y) = pygame.mouse.get_pos()
     		    cell = findCell.checkCell(x,y) #get board square number w func and pygame.mouse.get_pos()
-    		    if cell != 0 and board.b[cell] != ' ':
-                        pygame.draw.rect(screen, (255, 255, 0), pygame.Rect(x, y, 80, 80))
+    		    if cell != 0 and gameBoard.b[cell].type != ' ':
+                        (s,r) = findCell.getPos(cell)
+                        pygame.draw.rect(screen, (0, 0, 192), pygame.Rect(s, r, 80, 80), 4)
                         moveSelect = False
                         continue
     
                 #move the checker
-    	        if event.type==pygame.MOUSEBUTTONUP and pygame.mouse.get_pressed()[0] and not moveSelect:
+    	        if event.type==pygame.MOUSEBUTTONUP and not moveSelect:
                     (x,y) = pygame.mouse.get_pos()
                     cell2 = findCell.checkCell(x,y) #get board sqaure number
                     moveSelect = True
-                    if gameplay.validMove(gameBoard.b[cell], gameBoard.b[cell2], gameBoard):
-                        gameBoard.movePiece(gameBoard.b[cell2], gameBoard.b[cell])
+                    if cell2 != 0 and gameplay.validMove(gameBoard.b[cell], gameBoard.b[cell2], gameBoard):
+                        gameBoard.movePiece(cell2, cell)
     		    screen.fill((0,0,0))
     		    boardC(screen, gameBoard)
     		    pieces(screen, gameBoard)
 
-                #quit the game if Q is pressed
-                if event.type==pygame.KEYDOWN and pygame.key.get_pressed()[pygame.K_q] != 0:
-                    #(s, y) = pygame.mouse.get_pos()
-                    play = False	
-    
+                    
                 #check if there is a winner
 #                if cell2 and gameplay.winner(gameBoard.b[cell2].type, gameplay.pieceCount(gameBoard.b[cell2].type, gameBoard)):
 #                    play = False

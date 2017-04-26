@@ -11,62 +11,62 @@ def pieceCount(ptype, board): #takes in the type of piece & the board object
 #CHECKS IF THERE IS A WINNER
 def winner(ptype, count): #takes in the type of piece & a count
     if count == 0:
-        return false
+        return False
 
 #CHECKS FOR VALID MOVES
-def validMove(piece, newCell, board): #takes in a piece object & player number & new cell location
+def validMove(piece, newCell, board): #takes in a piece object & new cell location
 
-    movesize = getMoveSize(piece.cell) #returns the min jump size (max = movesize + 1)
+    movesize = getMoveSize(piece.cell, newCell.cell) #returns the min jump size (max = movesize + 1)
 
     if   piece.type == 'r': #can only move UP cell numbers
-        if (newCell - piece.cell == movesize or newCell - piece.cell == movesize+1) and newCell == ' ':
-            return true
-        elif (newCell - piece.cell == 7 or newCell - piece.cell == 9):
+        if (newCell.cell - piece.cell == movesize or newCell.cell - piece.cell == movesize+1) and newCell.type == ' ':
+            return True
+        elif (newCell.cell - piece.cell == 7 or newCell.cell - piece.cell == 9):
             return checkJump(piece, newCell, board)
         else:
-            return false
+            return False
 
     elif piece.type == 'b': #can only move DOWN cell numbers
-        if (piece.cell - newCell == movesize or piece.cell - newCell == movesize+1) and newCell == ' ':
-            return true
-        elif (newCell - piece.cell == -7 or newCell - piece.cell == -9):
+        if (piece.cell - newCell.cell == movesize or piece.cell - newCell.cell == movesize+1) and newCell.type == ' ':
+            return True
+        elif (newCell.cell - piece.cell == -7 or newCell.cell - piece.cell == -9):
             return checkJump(piece, newCell, board)
         else:
-            return false
+            return False
 
     elif piece.type == 'bk':
-        if (piece.cell - newCell == movesize or piece.cell - newCell == movesize+1) and newCell == ' ':
-            return true
-        elif (newCell - piece.cell == movesize or newCell - piece.cell == movesize+1) and newCell == ' ':
-            return true
-        elif (newCell - piece.cell == 7 or newCell - piece.cell == 9 or newCell - piece.cell == -7 or newCell - piece.cell == -9):
+        if (piece.cell - newCell.cell == movesize or piece.cell - newCell.cell == movesize+1) and newCell.type == ' ':
+            return True
+        elif (newCell.cell - piece.cell == movesize or newCell.ccell - piece.cell == movesize+1) and newCell.type == ' ':
+            return True
+        elif (newCell.cell - piece.cell == 7 or newCell.cell - piece.cell == 9 or newCell.cell - piece.cell == -7 or newCell.cell - piece.cell == -9):
             return checkJump(piece, newCell, board)
         else:
-            return false
+            return False
 
     elif piece.type == 'rk':
-        if (piece.cell - newCell == movesize or piece.cell - newCell == movesize+1) and newCell == ' ':
-            return true
-        elif (newCell - piece.cell == movesize or newCell - piece.cell == movesize+1) and newCell == ' ':
-            return true
-        elif (newCell - piece.cell == 7 or newCell - piece.cell == 9 or newCell - piece.cell == -7 or newCell - piece.cell == -9):
+        if (piece.cell - newCell.cell == movesize or piece.cell - newCell.cell == movesize+1) and newCell.type == ' ':
+            return True
+        elif (newCell.cell - piece.cell == movesize or newCell.cell - piece.cell == movesize+1) and newCell.cell == ' ':
+            return True
+        elif (newCell.cell - piece.cell == 7 or newCell.cell - piece.cell == 9 or newCell.cell - piece.cell == -7 or newCell.cell - piece.cell == -9):
             return checkJump(piece, newCell, board)
         else:
-            return false
+            return False
 
 #CHECKS A JUMP
 def checkJump(piece, newCell, board): #returns true if valid jump
 
-    midCell = piece.cell + getMoveSize(piece.cell)
+    midCell = piece.cell + getMoveSize(piece.cell, newCell.cell)
 
-    if board[midCell].type != piece.type and board[midCell].type != piece.type + 'k' and board[midCell] != ' ':
-        return true
+    if board[midCell].type != piece.type and board[midCell].type != piece.type + 'k' and board[midCell].type != ' ':
+        return True
     else:
-        return false
+        return False
 
 
 #GETS MOVE SIZE BASED ON ROW
-def getMoveSize(currCell): #the amount of cells the piece can move depends on the row 
+def getMoveSize(currCell, newCell): #the amount of cells the piece can move depends on the row 
                                     #it is in & the row it wants to move to
 
     if   currCell >=  1 and currCell <=  4:

@@ -3,18 +3,20 @@
 class board:
     def __init__(self):
 	self.b = []
-	for i in range(13,1): #(1, 13):
-        	self.b[i] = piece('r')
-		setCell(self.b[i], i)
-	for i in range(21,13): #(13, 21):
-		self.b[i] = ' '
-	for i in range(33,21): #(21, 33):
-		self.b[i] = piece('b')
-		setCell(self.b[i],i)
+	for i in range(1,13): #(1, 13):
+        	self.b.append(piece('r'))
+		self.b[i-1].setCell(i)
+	for i in range(13,21): #(13, 21):
+		self.b.append(piece(' '))
+                self.b[i-1].setCell(i)
+	for i in range(21,33): #(21, 33):
+		self.b.append(piece('b'))
+		self.b[i-1].setCell(i)
 
-    def movePiece(self, piece, oldcell):
-	self.b[piece.cell] = piece
-	self.b[oldcell] = ' '
+    def movePiece(self, new_cell, old_cell):
+        t = self.b[old_cell].type
+	self.b[new_cell].setType(t)
+	self.b[old_cell].setType(' ')
 
 # 1 - 12 (red)
 # 13 - 20 (empty)
