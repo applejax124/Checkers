@@ -77,7 +77,7 @@ def getMoveSize(currCell, newCell): #the amount of cells the piece can move depe
         else:
             return 3
     elif currCell >=  9 and currCell <= 12:
-        if neeCell < currCell:
+        if newCell < currCell:
             return 3
         else:
             return 4
