@@ -80,7 +80,7 @@ def playGame(playernum):
                     cell2 = findCell.checkCell(x,y) #get board sqaure number
                     moveSelect = True
                     if cell2 != 0 and gameplay.validMove(gameBoard.b[cell], gameBoard.b[cell2], gameBoard):
-                        gameBoard.movePiece(cell2, cell)
+                        gameBoard.movePiece(cell2-1, cell-1)
     		    screen.fill((0,0,0))
     		    boardC(screen, gameBoard)
     		    pieces(screen, gameBoard)
