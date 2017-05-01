@@ -73,7 +73,9 @@ def checkJump(piece, newCell, board, movesize, np): #returns true if valid jump
     elif np == -9:
         midCell = piece.cell - movesize - 1
 
-    if board.b[midCell].type != piece.type and board.b[midCell].type != (piece.type + 'k') and piece.type != board.b[midCell].type + 'k' and board.b[midCell].type != ' ':
+    if board.b[midCell].type != piece.type and board.b[midCell].type != (piece.type + 'k') \
+    and piece.type != board.b[midCell].type + 'k' and board.b[midCell].type != ' ' \
+    and newCell.type == ' ':
         return midCell
     else:
         return 1

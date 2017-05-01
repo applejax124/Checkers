@@ -68,16 +68,13 @@ def playGame(multiplayer):
 
         if not multiplayer and player == 1: #single player mode
             (piece1, piece2) = compMove.makeMove(gameBoard)
-            print "piece1: ",
-            print piece1,
-            print " | piece2: ",
-            print piece2
 
             #highlighting/selectpiece
-            type1 = gameBoard.b[piece1].type
-            type2 = gameBoard.b[piece2].type
+            type1 = gameBoard.b[piece1].getType()
+            type2 = gameBoard.b[piece2].getType()
             p = gameplay.validMove(gameBoard.b[piece1], gameBoard.b[piece2], gameBoard)
-            type2 = gameBoard.b[p].type
+            if p > 1:
+                type2 = gameBoard.b[p].getType()
             functions.selectpiece(piece1, gameBoard, check_type, screen)
             pygame.time.delay(500)
 
@@ -90,7 +87,7 @@ def playGame(multiplayer):
             pieces(screen, gameBoard)
 
             #check if there is a winner
-            winner = functions.iswinner(cell2, type2, type1, gameBoard)
+            winner = functions.iswinner(piece2, type2, type1, gameBoard)
             if winner != 0:
                 return winner
 
@@ -108,7 +105,7 @@ def playGame(multiplayer):
             if event.type==pygame.MOUSEBUTTONUP and moveSelect:
 		(x,y) = pygame.mouse.get_pos()
 		cell = findCell.checkCell(x,y) #get cell number based on mouse position
-                type1 = gameBoard.b[cell].type
+                type1 = gameBoard.b[cell].getType()
 		if functions.selectpiece(cell, gameBoard, check_type, screen) == 0:
                     moveSelect = False
                     continue
@@ -118,7 +115,7 @@ def playGame(multiplayer):
                 (x,y) = pygame.mouse.get_pos()
                 cell2 = findCell.checkCell(x,y) #get board square number
                 p = gameplay.validMove(gameBoard.b[cell], gameBoard.b[cell2], gameBoard)
-                type2 = gameBoard.b[p].type
+                type2 = gameBoard.b[p].getType()
                 moveSelect = True
                 
                 #move the selected piece if the move is valid

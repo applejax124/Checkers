@@ -22,11 +22,10 @@ def makeMove(board):
 
         #randomly choose one of the adders
         movesize = [3, 4, 5, 7, 9, -3, -4, -5, -7, -9]
-        mv = movesize[random.randrange(0,9)]
-        print mv
+        mv = movesize[random.randrange(0,10)]
 
         #choose random cell in board for which mv is a valid move
-        cell = VALID_CELLS[mv][random.randrange(0, len(VALID_CELLS[mv])-1)]
+        cell = VALID_CELLS[mv][random.randrange(0, len(VALID_CELLS[mv] ))]
 
         #set new cell
         new_cell = cell + mv
@@ -36,4 +35,10 @@ def makeMove(board):
             continue
         else:
             if gameplay.validMove(board.b[cell], board.b[new_cell], board) != 1:
+                print "mv: ",
+                print mv,
+                print " | cell: ",
+                print cell,
+                print " | new_cell: ",
+                print new_cell
                 return (cell, new_cell)

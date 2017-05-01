@@ -15,17 +15,17 @@ def quit(event_type):
 
 #Selecting and highlighting pieces during gameplay
 def selectpiece(cell, gameBoard, check_type, screen):   
-    type1 = gameBoard.b[cell].type
+    type1 = gameBoard.b[cell].getType()
     if cell >= 0 and type1 != ' ' and type1 == check_type or type1 == check_type + 'k':
         (s,r) = findCell.getPos(cell)
-        pygame.draw.rect(screen, (0, 0, 192), pygame.Rect(s, r, 80, 80), 4)
-        return 0
+        if s > 0 and r > 0:
+            pygame.draw.rect(screen, (0, 0, 192), pygame.Rect(s, r, 80, 80), 4)
+            return 0
     return 1
 
 def makemove(cell, cell2, p, gameBoard):
     p = gameplay.validMove(gameBoard.b[cell], gameBoard.b[cell2], gameBoard)
-    type2 = gameBoard.b[p].type
-    type1 = gameBoard.b[cell].type
+    type1 = gameBoard.b[cell].getType()
     if cell2 >= 0 and p == 0:
         #movePiece
         t = gameBoard.b[cell2].getType()
