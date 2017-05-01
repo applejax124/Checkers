@@ -105,6 +105,8 @@ def playGame(multiplayer):
             if event.type==pygame.MOUSEBUTTONUP and moveSelect:
 		(x,y) = pygame.mouse.get_pos()
 		cell = findCell.checkCell(x,y) #get cell number based on mouse position
+                if cell == -1:
+                    continue
                 type1 = gameBoard.b[cell].getType()
 		if functions.selectpiece(cell, gameBoard, check_type, screen) == 0:
                     moveSelect = False
@@ -114,6 +116,8 @@ def playGame(multiplayer):
 	    if event.type==pygame.MOUSEBUTTONUP and not moveSelect:
                 (x,y) = pygame.mouse.get_pos()
                 cell2 = findCell.checkCell(x,y) #get board square number
+                if cell2 == -1:
+                    continue
                 p = gameplay.validMove(gameBoard.b[cell], gameBoard.b[cell2], gameBoard)
                 type2 = gameBoard.b[p].getType()
                 moveSelect = True

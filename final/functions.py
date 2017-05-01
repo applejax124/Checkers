@@ -44,7 +44,7 @@ def makemove(cell, cell2, p, gameBoard):
         gameBoard.b[cell2].setType('rk')
 
 def iswinner(cell2, type2, type1, gameBoard):
-    if cell2 and gameplay.pieceCount(type2, gameBoard) == 0:
+    if cell2 != -1 and gameplay.pieceCount(type2, gameBoard) == 0:
         if type1 == 'r' or type1 == 'rk': 
             return 1
         elif type1 == 'b' or type1 == 'bk': 
