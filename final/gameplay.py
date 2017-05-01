@@ -20,7 +20,10 @@ def validMove(piece, newCell, board): #takes in a piece object & new cell locati
 
     movesize = getMoveSize(piece.cell, newCell.cell) #returns the min jump size (max = movesize + 1)
     pn = piece.cell - newCell.cell
-    np = newCell.cell - piece.cell 
+    np = newCell.cell - piece.cell
+
+    if piece.cell == newCell.cell:
+        return 1 
 
     if   piece.type == 'r': #can only move UP cell numbers
         if (np == movesize or np == movesize+1) and newCell.type == ' ':

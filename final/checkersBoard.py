@@ -7,6 +7,7 @@ import classes
 import gameplay
 import screens1
 import functions
+import compMove
 
 def boardC(screen, board):
    #quit button
@@ -66,8 +67,11 @@ def playGame(multiplayer):
             check_type = 'b'
 
         if not multiplayer and player == 1: #single player mode
-#            piece1 = 
-#            piece2 = 
+            (piece1, piece2) = compMove.makeMove(gameBoard)
+            print "piece1: ",
+            print piece1,
+            print " | piece2: ",
+            print piece2
 
             #highlighting/selectpiece
             type1 = gameBoard.b[piece1].type
@@ -131,7 +135,8 @@ def playGame(multiplayer):
                     return winner
 
                 #next player's turn
-                player = (player + 1) % 2
+                if p!= 1:
+                    player = (player + 1) % 2
 
         clock.tick(5)
 	pygame.display.flip()
