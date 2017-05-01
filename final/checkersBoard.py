@@ -39,7 +39,7 @@ def pieces(screen, board):
                     pygame.draw.circle(screen,(0, 0, 0),(x+40, y+40), 30, 10)
 
 
-def playGame():
+def playGame(multiplayer):
     pygame.init()
     screen = pygame.display.set_mode((800,800))
 
@@ -52,11 +52,22 @@ def playGame():
     pieces(screen, gameBoard)
     pygame.display.flip()
 
+    player = 0; 
+
     moveSelect = True
 
     while (play):
 
-	for event in pygame.event.get():
+        if player == 0:
+            check_type = 'r'
+        elif player == 1:
+            check_type = 'b'
+
+        if not multiplayer && player == 1: #single player mode
+            player = (player + 1) % 2
+            continue
+
+	for event in pygame.event.get(): #multiplayer mode
 
             #quit the game
             if event.type==pygame.MOUSEBUTTONUP:
@@ -69,7 +80,7 @@ def playGame():
 		(x,y) = pygame.mouse.get_pos()
 		cell = findCell.checkCell(x,y) #get board square number w func and pygame.mouse.get_pos()
                 type1 = gameBoard.b[cell].type
-		if cell >= 0 and gameBoard.b[cell].type != ' ':
+		if cell >= 0 and gameBoard.b[cell].type != ' ' and type1 == check_type or type1 == check_type + 'k':
                     (s,r) = findCell.getPos(cell)
                     pygame.draw.rect(screen, (0, 0, 192), pygame.Rect(s, r, 80, 80), 4)
                     moveSelect = False
@@ -81,6 +92,7 @@ def playGame():
                 cell2 = findCell.checkCell(x,y) #get board square number
                 moveSelect = True
                 p = gameplay.validMove(gameBoard.b[cell], gameBoard.b[cell2], gameBoard)
+                type2 = gameBoard.b[p].type
                 if cell2 >= 0 and p == 0:
                     #movePiece
                     t = gameBoard.b[cell2].getType()
@@ -103,10 +115,12 @@ def playGame():
                 pieces(screen, gameBoard)
                 
                 #check if there is a winner
-                if cell2 and gameplay.winner(gameBoard.b[cell2].type, gameplay.pieceCount(gameBoard.b[cell2].type, gameBoard)):
-                    play = False
-                    if gameBoard.b[cell2] == 'r' or gameBoard.b[cell2] == 'rk': return 1
-                    elif gameBoard.b[cell2] == 'b' or gameBoard.b[cell2] == 'bk': return 2
+                if cell2 and gameplay.pieceCount(type2, gameBoard) == 0:
+                    if type1 == 'r' or type1 == 'rk': return 1
+                    elif type1 == 'b' or type1 == 'bk': return 2
+
+                #next player's turn
+                player = (player + 1) % 2
 
         clock.tick(5)
 	pygame.display.flip()

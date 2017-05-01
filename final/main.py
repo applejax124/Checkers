@@ -18,7 +18,7 @@ def main():
 
     #mouse click on home screen
     clicked = False
-    playerNum = 0
+    multiplayer = False
     while not clicked:
 	for event in pygame.event.get():
             tupleXY = (0, 0)
@@ -28,16 +28,15 @@ def main():
 		y = tupleXY[1]
 		if x >= 50 and x <= 350:
 		    if y >= 425 and y <= 545:
-			playerNum = 1
 			clicked = True
 		if x >= 450 and x <= 750:
 		    if y >= 425 and y <= 545:
-			playerNum = 2
+			multiplayer = True
 			clicked = True
 
 
     #play game
-    rtn = checkersBoard.playGame()
+    rtn = checkersBoard.playGame(multiplayer)
 
     #results screen
     if 1 > 0:

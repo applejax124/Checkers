@@ -13,12 +13,7 @@ def pieceCount(ptype, board): #takes in the type of piece & the board object
     for cell in board.b:
         if cell.type == ptype:
             count = count + 1
-    return count
-
-#CHECKS IF THERE IS A WINNER
-def winner(ptype, count): #takes in the type of piece & a count
-    if count == 0:
-        return 0 #returns 0 if there is a winner 
+    return count 
 
 #CHECKS FOR VALID MOVES
 def validMove(piece, newCell, board): #takes in a piece object & new cell location
