@@ -39,8 +39,8 @@ def main():
     rtn = checkersBoard.playGame(multiplayer)
 
     #results screen
-    if 1 > 0:
-        screens1.resultScreen(1, screen)
+    if rtn > 0:
+        screens1.resultScreen(rtn, screen)
         pygame.display.flip()
         clicked2 = False
     
