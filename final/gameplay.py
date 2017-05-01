@@ -1,4 +1,11 @@
 #!usr/bin/python2.7
+#GAMEPLAY
+
+#TRUE_MOVE = 0
+#FALSE_MOVE = 1
+
+#TRUE_JUMP = 2
+#FALSE_JUMP = 1
 
 #COUNTS PIECES
 def pieceCount(ptype, board): #takes in the type of piece & the board object
@@ -6,102 +13,106 @@ def pieceCount(ptype, board): #takes in the type of piece & the board object
     for cell in board.b:
         if cell.type == ptype:
             count = count + 1
-    return count
-
-#CHECKS IF THERE IS A WINNER
-def winner(ptype, count): #takes in the type of piece & a count
-    if count == 0:
-        return False
+    return count 
 
 #CHECKS FOR VALID MOVES
 def validMove(piece, newCell, board): #takes in a piece object & new cell location
 
     movesize = getMoveSize(piece.cell, newCell.cell) #returns the min jump size (max = movesize + 1)
+    pn = piece.cell - newCell.cell
+    np = newCell.cell - piece.cell 
 
     if   piece.type == 'r': #can only move UP cell numbers
-        if (newCell.cell - piece.cell == movesize or newCell.cell - piece.cell == movesize+1) and newCell.type == ' ':
-            return True
-        elif (newCell.cell - piece.cell == 7 or newCell.cell - piece.cell == 9):
-            return checkJump(piece, newCell, board)
+        if (np == movesize or np == movesize+1) and newCell.type == ' ':
+            return 0
+        elif (np == 7 or np == 9):
+            return checkJump(piece, newCell, board, movesize, np)
         else:
-            return False
+            return 1
 
     elif piece.type == 'b': #can only move DOWN cell numbers
-        if (piece.cell - newCell.cell == movesize or piece.cell - newCell.cell == movesize+1) and newCell.type == ' ':
-            return True
-        elif (newCell.cell - piece.cell == -7 or newCell.cell - piece.cell == -9):
-            return checkJump(piece, newCell, board)
+        if (pn == movesize or pn == movesize+1) and newCell.type == ' ':
+            return 0
+        elif (np == -7 or np == -9):
+            return checkJump(piece, newCell, board, movesize, np)
         else:
-            return False
+            return 1
 
     elif piece.type == 'bk':
-        if (piece.cell - newCell.cell == movesize or piece.cell - newCell.cell == movesize+1) and newCell.type == ' ':
-            return True
-        elif (newCell.cell - piece.cell == movesize or newCell.ccell - piece.cell == movesize+1) and newCell.type == ' ':
-            return True
-        elif (newCell.cell - piece.cell == 7 or newCell.cell - piece.cell == 9 or newCell.cell - piece.cell == -7 or newCell.cell - piece.cell == -9):
-            return checkJump(piece, newCell, board)
+        if (pn == movesize or pn == movesize+1 or pn == movesize-1) and newCell.type == ' ':
+            return 0
+        elif (np == movesize or np == movesize+1 or np == movesize-1) and newCell.type == ' ':
+            return 0
+        elif (np == 7 or np == 9 or np == -7 or np == -9):
+            return checkJump(piece, newCell, board, movesize, np)
         else:
-            return False
+            return 1
 
     elif piece.type == 'rk':
-        if (piece.cell - newCell.cell == movesize or piece.cell - newCell.cell == movesize+1) and newCell.type == ' ':
-            return True
-        elif (newCell.cell - piece.cell == movesize or newCell.cell - piece.cell == movesize+1) and newCell.cell == ' ':
-            return True
-        elif (newCell.cell - piece.cell == 7 or newCell.cell - piece.cell == 9 or newCell.cell - piece.cell == -7 or newCell.cell - piece.cell == -9):
-            return checkJump(piece, newCell, board)
+        if (pn == movesize or pn == movesize-1 or pn == movesize+1) and newCell.type == ' ':
+            return 0
+        elif (np == movesize or np == movesize+1 or np == movesize-1) and newCell.type == ' ':
+            return 0
+        elif (np == 7 or np == 9 or np == -7 or np == -9):
+            return checkJump(piece, newCell, board, movesize, np)
         else:
-            return False
+            return 1
 
 #CHECKS A JUMP
-def checkJump(piece, newCell, board): #returns true if valid jump
+def checkJump(piece, newCell, board, movesize, np): #returns true if valid jump
 
-    midCell = piece.cell + getMoveSize(piece.cell, newCell.cell)
+    if np == 7:
+        midCell = piece.cell + movesize
+    elif np == -7:
+        midCell = piece.cell - movesize
+    elif np == 9:
+        midCell = piece.cell + movesize + 1
+    elif np == -9:
+        midCell = piece.cell - movesize - 1
 
-    if board[midCell].type != piece.type and board[midCell].type != piece.type + 'k' and board[midCell].type != ' ':
-        return True
+    if board.b[midCell].type != piece.type and board.b[midCell].type != (piece.type + 'k') and piece.type != board.b[midCell].type + 'k' and board.b[midCell].type != ' ':
+        return midCell
     else:
-        return False
+        return 1
 
 
 #GETS MOVE SIZE BASED ON ROW
 def getMoveSize(currCell, newCell): #the amount of cells the piece can move depends on the row 
                                     #it is in & the row it wants to move to
 
-    if   currCell >=  1 and currCell <=  4:
+    if   currCell >=  0 and currCell <=  3:
         return 4
-    elif currCell >=  5 and currCell <=  8:
+    elif currCell >=  4 and currCell <=  7:
         if newCell < currCell:
             return 4
         else:
             return 3
-    elif currCell >=  9 and currCell <= 12:
+    elif currCell >=  8 and currCell <= 11:
         if newCell < currCell:
             return 3
         else:
             return 4
-    elif currCell >= 13 and currCell <= 16:
+    elif currCell >= 12 and currCell <= 15:
         if newCell < currCell:
             return 4
         else:
             return 3
-    elif currCell >= 17 and currCell <= 20:
+    elif currCell >= 16 and currCell <= 19:
         if newCell < currCell:
             return 3
         else:
             return 4
-    elif currCell >= 21 and currCell <= 24:
+    elif currCell >= 20 and currCell <= 23:
         if newCell < currCell:
             return 4
         else:
             return 3
-    elif currCell >= 25 and currCell <= 28:
+    elif currCell >= 24 and currCell <= 27:
         if newCell < currCell:
             return 3
         else:
             return 4
-    elif currCell >= 29 and currCell <= 32:
+    elif currCell >= 28 and currCell <= 31:
         return 4
     else:
-        return 0
+        return 1
