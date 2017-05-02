@@ -40,13 +40,11 @@ def pieces(screen, board):
                 if block.type == 'bk': 
                     pygame.draw.circle(screen,(0, 0, 0),(x+40, y+40), 30, 10)
 
-
-def playGame(multiplayer):
+def playGame(mode):
+    
+    #initialize pygame
     pygame.init()
     screen = pygame.display.set_mode((800,800))
-
-    play = True #continue game play until play == False
-
     clock = pygame.time.Clock()
 
     #instantiate board object and draw screen
@@ -55,10 +53,11 @@ def playGame(multiplayer):
     pieces(screen, gameBoard)
     pygame.display.flip()
 
-    player = 0; 
+    player = 0; #start game with player 0 (red) and alternate turns with player 1
 
-    moveSelect = True 
+    moveSelect = True #will determine whether a chosen cell is the source or destination
 
+    play = True
     while (play):
 
         if player == 0: #player 1
@@ -66,7 +65,8 @@ def playGame(multiplayer):
         elif player == 1: #player 2 or AI
             check_type = 'b'
 
-        if not multiplayer and player == 1: #single player mode
+        #AI'S TURN 
+        if mode == 1 and player == 1: 
             (piece1, piece2) = compMove.makeMove(gameBoard)
 
             #highlighting/selectpiece
@@ -95,7 +95,8 @@ def playGame(multiplayer):
             player = (player + 1) % 2
             continue
 
-	for event in pygame.event.get(): #multiplayer mode
+        #HUMANS' TURNS
+	for event in pygame.event.get(): 
 
             #quit the game
             if functions.quit(event.type) == 0:
@@ -108,6 +109,7 @@ def playGame(multiplayer):
                 if cell == -1:
                     continue
                 type1 = gameBoard.b[cell].getType()
+                #checks to make sure that the chosen piece is the current player's piece
 		if functions.selectpiece(cell, gameBoard, check_type, screen) == 0:
                     moveSelect = False
                     continue
@@ -115,9 +117,10 @@ def playGame(multiplayer):
             #move the checker
 	    if event.type==pygame.MOUSEBUTTONUP and not moveSelect:
                 (x,y) = pygame.mouse.get_pos()
-                cell2 = findCell.checkCell(x,y) #get board square number
+                cell2 = findCell.checkCell(x,y)
                 if cell2 == -1:
                     continue
+                #checks if the 
                 p = gameplay.validMove(gameBoard.b[cell], gameBoard.b[cell2], gameBoard)
                 type2 = gameBoard.b[p].getType()
                 moveSelect = True

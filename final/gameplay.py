@@ -1,17 +1,14 @@
 #!usr/bin/python2.7
 #GAMEPLAY
 
-#TRUE_MOVE = 0
-#FALSE_MOVE = 1
-
-#TRUE_JUMP = 2
-#FALSE_JUMP = 1
+#TRUE = 0
+#FALSE = 1
 
 #COUNTS PIECES
 def pieceCount(ptype, board): #takes in the type of piece & the board object
     count = 0;
     for cell in board.b:
-        if cell.type == ptype:
+        if cell.type == ptype or cell.type == ptype + 'k':
             count = count + 1
     return count 
 
@@ -73,6 +70,7 @@ def checkJump(piece, newCell, board, movesize, np): #returns true if valid jump
     elif np == -9:
         midCell = piece.cell - movesize - 1
 
+    #check if the move is valid based on the type of the midcell and the type of the new cell
     if board.b[midCell].type != piece.type and board.b[midCell].type != (piece.type + 'k') \
     and piece.type != board.b[midCell].type + 'k' and board.b[midCell].type != ' ' \
     and newCell.type == ' ':
@@ -82,8 +80,8 @@ def checkJump(piece, newCell, board, movesize, np): #returns true if valid jump
 
 
 #GETS MOVE SIZE BASED ON ROW
-def getMoveSize(currCell, newCell): #the amount of cells the piece can move depends on the row 
-                                    #it is in & the row it wants to move to
+def getMoveSize(currCell, newCell): #the amount of cells the piece can move depends on the  
+                                    #row it's in & the row it wants to move to
 
     if   currCell >=  0 and currCell <=  3:
         return 4
