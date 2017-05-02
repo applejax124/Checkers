@@ -37,22 +37,24 @@ def resultScreen(winner, screen):
     background = pygame.transform.scale(background, (800, 800))
     rect = background.get_rect()
     screen.blit(background, rect)
-    pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(150, 350, 500, 150))
-    screen.blit(playAgainText, (175, 400))
+    pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(150, 400, 500, 150))
+    screen.blit(playAgainText, (225, 440))
     quitText = font2.render("Quit", True, (255, 255, 255))
-    pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(275, 675, 250, 200))
-    screen.blit(quitText, pygame.Rect(275, 675, 250, 200))
+    pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(275, 650, 250, 100))
+    screen.blit(quitText, (320, 675))
 
     #choose which one based on passed in parameters
+	#1 is red winner, 2 is black winner, 3 is you win, 4 is you lose
+
     if winner == 1:
-        p1Text = font1.render("Player One", True, (255, 255, 255))
+        p1Text = font1.render("Red", True, (255, 255, 255))
         winsText = font1.render("Wins!", True, (255, 255, 255))
-        screen.blit(p1Text, (55, 50))
+        screen.blit(p1Text, (275, 50))
         screen.blit(winsText, (225, 200))
     elif winner == 2:
-        p2Text = font1.render("Player Two", True, (255, 255, 255))
+        p2Text = font1.render("Black", True, (255, 255, 255))
         winsText = font1.render("Wins!", True, (250, 255, 255))
-        screen.blit(p2Text, (55, 50))
+        screen.blit(p2Text, (225, 50))
         screen.blit(winsText, (225, 200))
     elif winner == 3:
         youWinText = font1.render("You win!", True, (255, 255, 255))
