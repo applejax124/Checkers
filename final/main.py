@@ -54,8 +54,8 @@ def main():
                     y = tupleXY[1]
                     if x >= 150 and x <= 650:
                         if y >= 450 and y <= 650:
-                            clicked2 = True
-                            main()
+							clicked2 = True
+							checkersBoard.playGame(multiplayer)
                 if event.type == pygame.KEYDOWN and pygame.key.get_pressed()[pygame.K_q] != 0:
                     clicked2 = True
 
