@@ -35,10 +35,4 @@ def makeMove(board):
             continue
         else:
             if gameplay.validMove(board.b[cell], board.b[new_cell], board) != 1:
-                #print "mv: ",
-                #print mv,
-                #print " | cell: ",
-                #print cell,
-                #print " | new_cell: ",
-                #print new_cell
                 return (cell, new_cell)

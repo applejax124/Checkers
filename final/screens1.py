@@ -40,7 +40,7 @@ def resultScreen(winner, screen):
     pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(150, 400, 500, 150))
     screen.blit(playAgainText, (225, 440))
     quitText = font2.render("Quit", True, (255, 255, 255))
-    pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(275, 650, 250, 100))
+    pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(275, 650, 300, 100))
     screen.blit(quitText, (320, 675))
 
     #choose which one based on passed in parameters
