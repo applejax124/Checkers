@@ -39,7 +39,7 @@ def results(mode, screen):
     #display results screen
     if mode == 2:
         screens1.resultScreen(rtn, screen)
-    else if mode == 1:
+    elif mode == 1:
         screens1.resultScreen(rtn+2, screen)
 	pygame.display.flip()
 	clicked = False
@@ -58,31 +58,30 @@ def results(mode, screen):
 		    return False
 
 if __name__ == '__main__':
-
-    #initialize pygame
-    pygame.init()
+	#initialize pygame
+	pygame.init()
 	pygame.font.init()
-    screen = pygame.display.set_mode((800, 800))
-    clock = pygame.time.Clock()
+	screen = pygame.display.set_mode((800, 800))
+	clock = pygame.time.Clock()
 
-    playGame = True
-    while playGame:
+	playGame = True
+	while playGame:
 
-        #display homescreen
-        mode = home(screen)
-    
-        #quits if q is pressed on homescreen
-        if mode == 0: 
-            playGame = False
-            continue
+		#display homescreen
+		mode = home(screen)
 
-        #play game
-        rtn = checkersBoard.playGame(mode)
-        #quits if quit button is pressed
-        if rtn == 0:
-            playGame = False
-            continue
+		#quits if q is pressed on homescreen
+		if mode == 0: 
+			playGame = False
+			continue
 
-        #display results screen if quit button not pressed
-        else:
-	    playGame = results(mode, screen)
+		#play game
+		rtn = checkersBoard.playGame(mode)
+		#quits if quit button is pressed
+		if rtn == 0:
+			playGame = False
+			continue
+
+		#display results screen if quit button not pressed
+		else:
+			playGame = results(mode, screen)
