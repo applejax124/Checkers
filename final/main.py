@@ -75,6 +75,7 @@ def playGame(multiplayer, screen):
 
 if __name__ == '__main__':
 	pygame.init()
+	pygame.font.init()
 	screen = pygame.display.set_mode((800, 800))
 	clock = pygame.time.Clock()
 

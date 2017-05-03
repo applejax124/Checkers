@@ -42,102 +42,122 @@ def pieces(screen, board):
 
 
 def playGame(multiplayer):
-    pygame.init()
-    screen = pygame.display.set_mode((800,800))
+	pygame.init()
+	screen = pygame.display.set_mode((800,800))
+	play = True #continue game play until play == False
+	clock = pygame.time.Clock()
+	
+	#instantiate board object and draw screen
+	gameBoard = classes.board()
+	boardC(screen, gameBoard)
+	pieces(screen, gameBoard)
+	#pygame.display.flip()
 
-    play = True #continue game play until play == False
-
-    clock = pygame.time.Clock()
-
-    #instantiate board object and draw screen
-    gameBoard = classes.board()
-    boardC(screen, gameBoard)
-    pieces(screen, gameBoard)
-    pygame.display.flip()
-
-    player = 0; 
-
-    moveSelect = True 
-
-    while (play):
-
-        if player == 0: #player 1
-            check_type = 'r'
-        elif player == 1: #player 2 or AI
-            check_type = 'b'
-
-        if not multiplayer and player == 1: #single player mode
-            (piece1, piece2) = compMove.makeMove(gameBoard)
-
-            #highlighting/selectpiece
-            type1 = gameBoard.b[piece1].getType()
-            type2 = gameBoard.b[piece2].getType()
-            p = gameplay.validMove(gameBoard.b[piece1], gameBoard.b[piece2], gameBoard)
-            if p > 1:
-                type2 = gameBoard.b[p].getType()
-            functions.selectpiece(piece1, gameBoard, check_type, screen)
-            pygame.time.delay(500)
-
-            #move piece
-            functions.makemove(piece1, piece2, p, gameBoard)
-
-            #update screen
-            screen.fill((0,0,0))
-            boardC(screen, gameBoard)
-            pieces(screen, gameBoard)
-
-            #check if there is a winner
-            winner = functions.iswinner(piece2, type2, type1, gameBoard)
-            if winner != 0:
-                return winner
-
-            #update player
-            player = (player + 1) % 2
-            continue
-
-	for event in pygame.event.get(): #multiplayer mode
-
-            #quit the game
-            if functions.quit(event.type) == 0:
-                return 0
-
-            #highlighting/select piece
-            if event.type==pygame.MOUSEBUTTONUP and moveSelect:
-		(x,y) = pygame.mouse.get_pos()
-		cell = findCell.checkCell(x,y) #get cell number based on mouse position
-                if cell == -1:
-                    continue
-                type1 = gameBoard.b[cell].getType()
-		if functions.selectpiece(cell, gameBoard, check_type, screen) == 0:
-                    moveSelect = False
-                    continue
-
-            #move the checker
-	    if event.type==pygame.MOUSEBUTTONUP and not moveSelect:
-                (x,y) = pygame.mouse.get_pos()
-                cell2 = findCell.checkCell(x,y) #get board square number
-                if cell2 == -1:
-                    continue
-                p = gameplay.validMove(gameBoard.b[cell], gameBoard.b[cell2], gameBoard)
-                type2 = gameBoard.b[p].getType()
-                moveSelect = True
-                
-                #move the selected piece if the move is valid
-                functions.makemove(cell, cell2, p, gameBoard)
-
-                #update screen
-                screen.fill((0,0,0))
-  		boardC(screen, gameBoard)
-                pieces(screen, gameBoard)
-                
-                #check if there is a winner
-                winner = functions.iswinner(cell2, type2, type1, gameBoard)
-                if winner != 0:
-                    return winner
-
-                #next player's turn
-                if p!= 1:
-                    player = (player + 1) % 2
-
-        clock.tick(5)
+	font = "forque"
+	font1 = pygame.font.SysFont(font, 70)
+	redText = font1.render("Red's Turn", True, (255, 255, 255))
+	blackText = font1.render("Black's Turn", True, (255, 255, 255))
+	yourText = font1.render("Your Turn", True, (255, 255, 255))
+	compText = font1.render("Computer's Turn", True, (255, 255, 255))
+	
+	if multiplayer:
+		screen.blit(redText, (275, 20))
+	else:
+		screen.blit(yourText, (275, 20))
 	pygame.display.flip()
+
+	player = 0
+	moveSelect = True 
+
+	while (play):
+		if player == 0: #player 1
+			check_type = 'r'
+		elif player == 1: #player 2 or AI
+			check_type = 'b'
+
+		if not multiplayer and player == 1: #single player mode
+			(piece1, piece2) = compMove.makeMove(gameBoard)
+
+			#highlighting/selectpiece
+			type1 = gameBoard.b[piece1].getType()
+			type2 = gameBoard.b[piece2].getType()
+			p = gameplay.validMove(gameBoard.b[piece1], gameBoard.b[piece2], gameBoard)
+			if p > 1:
+				type2 = gameBoard.b[p].getType()
+			functions.selectpiece(piece1, gameBoard, check_type, screen)
+			pygame.time.delay(500)
+
+			#move piece
+			pygame.time.wait(500)
+			functions.makemove(piece1, piece2, p, gameBoard)
+
+			#update screen
+			screen.fill((0,0,0))
+			boardC(screen, gameBoard)
+			pieces(screen, gameBoard)
+			screen.blit(yourText, (275, 20))
+			pygame.display.flip()
+
+			#check if there is a winner
+			winner = functions.iswinner(piece2, type2, type1, gameBoard)
+			if winner != 0:
+				return winner
+
+			#update player
+			player = (player + 1) % 2
+			continue
+
+		for event in pygame.event.get(): #multiplayer mode
+
+			#quit the game
+			if functions.quit(event.type) == 0:
+				return 0
+
+			#highlighting/select piece
+			if event.type==pygame.MOUSEBUTTONUP and moveSelect:
+				(x,y) = pygame.mouse.get_pos()
+				cell = findCell.checkCell(x,y) #get cell number based on mouse position
+				if cell == -1:
+					continue
+				type1 = gameBoard.b[cell].getType()
+				if functions.selectpiece(cell, gameBoard, check_type, screen) == 0:
+					moveSelect = False
+					continue
+
+			#move the checker
+			if event.type==pygame.MOUSEBUTTONUP and not moveSelect:
+				(x,y) = pygame.mouse.get_pos()
+				cell2 = findCell.checkCell(x,y) #get board square number
+				if cell2 == -1:
+					continue
+				p = gameplay.validMove(gameBoard.b[cell], gameBoard.b[cell2], gameBoard)
+				type2 = gameBoard.b[p].getType()
+				moveSelect = True
+
+				#move the selected piece if the move is valid
+				functions.makemove(cell, cell2, p, gameBoard)
+
+				#update screen
+				screen.fill((0,0,0))
+  				boardC(screen, gameBoard)
+				pieces(screen, gameBoard)
+
+				if multiplayer:
+					if player == 0:
+						screen.blit(blackText, (275, 20))
+					else:
+						screen.blit(redText, (275, 20))
+				else:
+					screen.blit(compText, (200, 20))
+
+				#check if there is a winner
+				winner = functions.iswinner(cell2, type2, type1, gameBoard)
+				if winner != 0:
+					return winner
+
+				#next player's turn
+				if p!= 1:
+					player = (player + 1) % 2
+
+		clock.tick(5)
+		pygame.display.flip()
