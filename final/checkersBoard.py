@@ -41,20 +41,22 @@ def pieces(screen, board):
                     pygame.draw.circle(screen,(0, 0, 0),(x+40, y+40), 30, 10)
 
 def playGame(multiplayer):
+
+	#initialize pygame
 	pygame.init()
 	screen = pygame.display.set_mode((800,800))
 	play = True #continue game play until play == False
 	clock = pygame.time.Clock()
-	player = 0
-	moveSelect = True
+	player = 0 #start game with player 0 (red) and alternate turns with player 1
+	moveSelect = True #will determine whether a chosen cell is the source or destination
 	play = True
 	
 	#instantiate board object and draw screen
 	gameBoard = classes.board()
 	boardC(screen, gameBoard)
 	pieces(screen, gameBoard)
-	#pygame.display.flip()
 
+	#font initializations for player updates
 	font = "forque"
 	font1 = pygame.font.SysFont(font, 70)
 	redText = font1.render("Red's Turn", True, (255, 255, 255))
@@ -62,6 +64,7 @@ def playGame(multiplayer):
 	yourText = font1.render("Your Turn", True, (255, 255, 255))
 	compText = font1.render("Computer's Turn", True, (255, 255, 255))
 	
+	#start screen with first player update
 	if multiplayer:
 		screen.blit(redText, (275, 20))
 	else:
@@ -73,6 +76,7 @@ def playGame(multiplayer):
 		elif player == 1: #player 2 or AI
 			check_type = 'b'
 
+		#AI's turn
 		if not multiplayer and player == 1: #single player mode
 			(piece1, piece2) = compMove.makeMove(gameBoard)
 
@@ -105,6 +109,7 @@ def playGame(multiplayer):
 			player = (player + 1) % 2
 			continue
 
+		#HUMANS' TURNS
 		for event in pygame.event.get(): #multiplayer mode
 
 			#quit the game
@@ -118,6 +123,7 @@ def playGame(multiplayer):
 				if cell == -1:
 					continue
 				type1 = gameBoard.b[cell].getType()
+				#checks to make sure that the chosen piece is the current player's piece
 				if functions.selectpiece(cell, gameBoard, check_type, screen) == 0:
 					moveSelect = False
 					continue
@@ -128,6 +134,7 @@ def playGame(multiplayer):
 				cell2 = findCell.checkCell(x,y) #get board square number
 				if cell2 == -1:
 					continue
+				#checks if the move is valid
 				p = gameplay.validMove(gameBoard.b[cell], gameBoard.b[cell2], gameBoard)
 				type2 = gameBoard.b[p].getType()
 				moveSelect = True
@@ -140,6 +147,7 @@ def playGame(multiplayer):
   				boardC(screen, gameBoard)
 				pieces(screen, gameBoard)
 
+				#display player update on whose turn it is
 				if multiplayer:
 					if player == 0:
 						screen.blit(blackText, (275, 20))
