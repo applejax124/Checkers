@@ -1,8 +1,6 @@
-Data Structures - CSE 20312 Final Project     
-     
-Cami Carballo     
-Allison Raines     
-Kendyll Kraus     
-Anna Smith     
+Simple Checkers Program
 
+Gameplay Modes:
 
+* Single player (against computer)
+* Multiplayer  
